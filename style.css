@@ -1,0 +1,201 @@
+:root {
+    /* Professional Subtle Gradient Background */
+    --background-color: linear-gradient(to bottom, #87CEEB, #4682B4); /* Sky blue to steel blue */
+
+    /* Card Styling */
+    --card-gradient: linear-gradient(145deg, #ffffff, #f1f1f1); /* Soft white-gray gradient for clean design */
+    --card-shadow: rgba(0, 0, 0, 0.1);
+
+    /* Input and Button */
+    --input-background: #ffffff; /* Clean white background for the input */
+    --button-background: #4caf50; /* Calm green for the button */
+    --button-hover: #3e8e41; /* Slightly darker green for hover */
+
+    /* Text Colors */
+    --primary-text: #2c3e50; /* Dark slate for readability */
+    --secondary-text: #6c757d; /* Neutral gray for less important text */
+
+    /* Border Radius */
+    --border-radius: 12px;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+
+    /* Default background to prevent white flash */
+    background: linear-gradient(to bottom, #87CEEB, #4682B4); /* Daytime colors */
+
+    /* Smooth transition for background changes */
+    transition: background 1.5s ease-in-out;
+}
+
+
+
+.card {
+    width: 90%;
+    max-width: 480px;
+    background: var(--card-gradient);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px var(--card-shadow);
+    padding: 40px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    background: var(--input-background);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.search input:focus {
+    outline: none;
+    border-color: var(--button-background);
+}
+
+.search button {
+    background: var(--button-background);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.search button:hover {
+    background: var(--button-hover);
+    transform: scale(1.1);
+}
+
+.search button img {
+    width: 26px;
+}
+
+.weather-icon {
+    width: 120px;
+    margin: 20px auto;
+    display: block;
+}
+
+.weather {
+    display: none;
+    opacity: 0;
+    transform: scale(0.9); /* Shrink initially */
+    transition: all 0.5s ease; /* Smooth appearance */
+}
+
+.weather.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1); /* Restore size smoothly */
+}
+
+.weather h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin: 10px 0;
+    color: var(--primary-text);
+}
+
+.weather h2 {
+    font-size: 20px;
+    color: var(--secondary-text);
+}
+
+.detail {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.col {
+    text-align: center;
+   
+}
+
+.col img {
+    width: 40px;
+    margin-bottom: 10px;
+}
+
+.humidity,
+.wind {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-text);
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+    }
+
+    .weather h1 {
+        font-size: 36px;
+    }
+
+    .weather h2 {
+        font-size: 18px;
+    }
+
+    .detail {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
